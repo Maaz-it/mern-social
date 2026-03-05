@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const userSchema = new mongoose.Schema({
     name:{
         type: String,
@@ -42,7 +41,6 @@ const userSchema = new mongoose.Schema({
             ref: "Post"
         }
     ],
-
     reels:[
         {type: mongoose.Schema.Types.ObjectId,
             ref: "Reels"
@@ -61,10 +59,13 @@ const userSchema = new mongoose.Schema({
     isotpVerify:{
         type: Boolean,
         default: false
+    }, 
+     bio:{
+        type: String,
+    },
+     profetion:{
+        type: String,
     }
 }, {timestamps: true})
-
-
 const User = mongoose.model("User" , userSchema)
-
 export default User;

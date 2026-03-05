@@ -11,5 +11,8 @@ export const sendotp = (data) => api.post("auth/sendotp" ,data)
 
 export const verifyotp = (data) => api.post("auth/verifyotp", data)
 
+export const getme = (data) => api.get("user/Me" , data)
 
 export const changepassword = (data) => api.post("auth/resetpassword", data)
+
+export const UpdateProfile = (data) => api.put("user/edit-profile", data)
