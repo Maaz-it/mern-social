@@ -8,7 +8,8 @@ const postSchema = new mongoose.Schema({
     },
     mediaType:{
         type: String,
-        enum:["image" , "Video"]
+        enum:["image" , "video"],
+        required: true
     },
     media:{
         type: String,
@@ -24,12 +25,20 @@ const postSchema = new mongoose.Schema({
         ref: "User",
       }
     ],
-    comments:[
-      {
-          type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+    comments: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      },
+      text: String,
+      createdAt: {
+        type: Date,
+        default: Date.now
       }
-    ]
+    }
+  ]
+
 }, {timestamps: true})
 
 

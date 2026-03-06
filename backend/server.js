@@ -25,6 +25,9 @@ app.use("/api/auth" , authRouter)
 app.use("/api/user" , userRouter)
 
 
+// app.use("/api/post" , userRouter)
+
+
 app.listen(port , ()=>{
 connectDB()
     console.log("server starterd now time for frontend")

@@ -9,7 +9,7 @@ const EditProfile = ({ user, visible, setVisible }) => {
 
   const[name , setName] = useState(user?.name || null )
 
-  const [userName , setUserNamel] = useState(user?.email || null)
+  const [userName , setUserNamel] = useState(user?.userName || null)
 
   const [bio , setBio] = useState(user?.bio || null)
 
@@ -22,27 +22,24 @@ const EditProfile = ({ user, visible, setVisible }) => {
     try {
         const formData = new FormData();
 
-        formData.append("name" , name)
-
-        formData.append("Username" , userName)
-
-        formData.append("Bio" , bio)
-
-        formData.append("profetion" , profetion)
-
+formData.append("name", name)
+formData.append("username", userName)
+formData.append("bio", bio)
+formData.append("profession", profetion)
 
         // image thing 
-        if (Image && Image !== user.profileurl) {
-            const uriPart = Image.split(".");
-            const fileType = uriPart[uriPart.length-1]
+        if (selectedImage && selectedImage !==  user?.profileurl) {
+          const urlprofile = selectedImage.split(".")
+          const filetype = urlprofile[urlprofile.length - 1]
         
-            formData.append("profileImage", {
-                uri: Image,
-                name: `photo.${fileType}`,
-                type: `image/${fileType}`
-            })
-        }
+        
+          formData.append("image" , {
+            uri: selectedImage,
+            name: `photo.${filetype}`,
+            type : `Image/${filetype}`
+          })
 
+        }
         const response = await UpdateProfile(formData)
 
 
