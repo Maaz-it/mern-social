@@ -11,3 +11,15 @@ export const getCurrentUSer = () => {
 export const getMydata = () =>{
     return api.get("user/Me")
 }
+
+
+export const getallpost = () =>{
+    return api.get("user/feed")
+}
+
+
+
+export const LikePost  = (postId) =>{
+    console.log("Calling" , `/user/Likes/${postId}`)
+    return api.post(`/user/Likes/${postId}`)
+}
